@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -7,6 +8,7 @@ import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import About from '../../components/About';
 
 import FacebookIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -28,6 +30,14 @@ function Copyright() {
 }
 
 export default function Footer() {
+
+  const [showAbout, setShowAbout] = useState(false); // State to manage whether to show the About component
+
+  // Function to toggle the About component
+  const toggleAbout = () => {
+    setShowAbout(!showAbout);
+  };
+
   return (
     <Container
       sx={{
@@ -127,7 +137,7 @@ export default function Footer() {
           <Typography variant="body2" fontWeight={600}>
             Company
           </Typography>
-          <Link color="text.secondary" href="#">
+          <Link color="text.secondary" onClick={toggleAbout}>
             About us
           </Link>
           <Link color="text.secondary" href="#">
@@ -215,6 +225,7 @@ export default function Footer() {
           </IconButton>
         </Stack>
       </Box>
+      {showAbout && <About />}
     </Container>
   );
 }
