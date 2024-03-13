@@ -1,1 +1,3 @@
 # QuickStitchCo
+
+A platform
